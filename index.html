@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Conor Caldwell-Gibbons</title>
+  <meta name="description" content="Psychology graduate who runs research, coordinates projects, and works on the human side of AI. Five documented projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,300;1,14..32,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #0C0C0E;
+      --bg2:      #111113;
+      --bg3:      #171719;
+      --card:     #141416;
+      --teal:     #3ABFBF;
+      --teal-hi:  #55CFCF;
+      --teal-lo:  rgba(58,191,191,0.1);
+      --teal-b:   rgba(58,191,191,0.2);
+      --white:    #FFFFFF;
+      --cream:    #F4F2ED;
+      --ink:      #111113;
+      --body-c:   #42424A;
+      --muted:    #8A8A94;
+      --rl:       #E0DDD6;
+      --rd:       rgba(255,255,255,0.065);
+      --txt:      rgba(255,255,255,0.82);
+      --txt2:     rgba(255,255,255,0.45);
+      --txt3:     rgba(255,255,255,0.22);
+      --ff:       'Inter', sans-serif;
+      --r:        8px;
+      --rlg:      12px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--ff); background: var(--bg); color: var(--txt);
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .js [data-r] { opacity: 0; transform: translateY(18px);
+      transition: opacity .6s cubic-bezier(.22,1,.36,1), transform .6s cubic-bezier(.22,1,.36,1); }
+    .js [data-r].vis { opacity: 1; transform: none; }
+    .js [data-r="2"] { transition-delay: .1s; }
+    .js [data-r="3"] { transition-delay: .18s; }
+
+    .W { max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); }
+    section { padding: clamp(80px, 10vw, 120px) 0; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+      background: rgba(12,12,14,.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--rd); }
+    .nav-in { max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); height: 58px;
+      display: flex; align-items: center; justify-content: space-between; }
+    .logo { display: flex; align-items: center; gap: 10px; font-size: .875rem; font-weight: 700; color: var(--white); letter-spacing: -.015em; }
+    .logo-sq { width: 26px; height: 26px; border-radius: 6px; background: var(--teal); display: flex; align-items: center; justify-content: center; }
+    .logo-sq span { font-size: .55rem; font-weight: 900; color: #071919; }
+    .nav-ul { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-ul a { font-size: .8rem; font-weight: 500; color: var(--txt3); padding: 5px 11px; border-radius: 5px; transition: color .15s, background .15s; }
+    .nav-ul a:hover { color: var(--white); background: rgba(255,255,255,.055); }
+    .nav-cta { background: var(--teal-lo) !important; border: 1px solid var(--teal-b) !important; color: var(--teal) !important;
+      border-radius: 100px !important; padding: 6px 16px !important; margin-left: 6px; font-weight: 600 !important; }
+    .brg { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .brg span { display: block; width: 20px; height: 1.5px; background: rgba(255,255,255,.5); border-radius: 2px; }
+
+    /* HERO */
+    #hero { min-height: 92svh; display: flex; align-items: center; padding: 110px 0 80px; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(58,191,191,.06) 0%, transparent 65%); pointer-events: none; }
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 9px; font-size: .65rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--teal); margin-bottom: 28px; }
+    .pip { width: 5px; height: 5px; border-radius: 50%; background: var(--teal); animation: pip 2.5s ease infinite; }
+    @keyframes pip { 0%,100% { box-shadow: 0 0 0 0 rgba(58,191,191,.55); } 60% { box-shadow: 0 0 0 7px rgba(58,191,191,0); } }
+    .hero-h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -.05em; line-height: .98; color: var(--white); margin-bottom: 28px; }
+    .hero-h1 .tc { color: var(--teal); }
+    .hero-h1 .dim { font-weight: 300; font-style: italic; color: var(--txt3); }
+    .hero-sub { font-size: clamp(.9375rem, 1.5vw, 1.0625rem); color: var(--txt2); line-height: 1.82; max-width: 480px; margin-bottom: 44px; }
+    .hero-acts { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 64px; }
+    .btn-t { display: inline-flex; align-items: center; gap: 7px; background: var(--teal); color: #071919; font-size: .875rem; font-weight: 700;
+      padding: 13px 24px; border-radius: 100px; transition: background .2s, transform .18s, box-shadow .2s; }
+    .btn-t:hover { background: var(--teal-hi); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(58,191,191,.28); }
+    .btn-g { display: inline-flex; align-items: center; gap: 7px; font-size: .875rem; font-weight: 500; color: var(--txt3); padding: 13px 20px;
+      border-radius: 100px; border: 1px solid rgba(255,255,255,.08); transition: color .18s, border-color .18s; }
+    .btn-g:hover { color: rgba(255,255,255,.65); border-color: rgba(255,255,255,.2); }
+    .hrow { border-top: 1px solid var(--rd); padding-top: 28px; display: flex; }
+    .hstat { padding-right: 30px; margin-right: 30px; border-right: 1px solid var(--rd); }
+    .hstat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .hstat-n { font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: -.05em; line-height: 1; margin-bottom: 5px; }
+    .hstat-l { font-size: .7rem; color: var(--txt3); line-height: 1.45; max-width: 150px; }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-g { display: grid; grid-template-columns: 1fr 260px; gap: 64px; align-items: start; }
+    .sec-tag { font-size: .62rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+    .h2-d { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.045em; line-height: 1.0; color: var(--ink); margin-bottom: 22px; }
+    .h2-l { color: var(--white); }
+    .p-d { font-size: 1.0625rem; color: var(--body-c); line-height: 1.82; margin-bottom: 14px; }
+    .p-d:last-of-type { margin-bottom: 28px; }
+    .pills { display: flex; flex-wrap: wrap; gap: 7px; }
+    .pill { font-size: .72rem; font-weight: 500; background: var(--white); color: var(--ink); border: 1px solid var(--rl); padding: 5px 12px; border-radius: 100px; }
+    .photo-card { border-radius: var(--rlg); overflow: hidden; border: 1px solid var(--rl); background: var(--white); position: sticky; top: 78px; }
+    .photo-card::before { content: ''; display: block; height: 2px; background: linear-gradient(90deg, var(--teal), rgba(58,191,191,.05)); }
+    .photo-img { aspect-ratio: 3/4; background: linear-gradient(150deg, #EAE7DF, #DDD9D0); }
+    .photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-ft { padding: 13px 15px; border-top: 1px solid var(--rl); }
+    .photo-n { font-size: .875rem; font-weight: 700; color: var(--ink); letter-spacing: -.02em; }
+    .photo-s { font-size: .7rem; color: var(--muted); margin-top: 2px; }
+
+    /* MARQUEE */
+    .mq { background: var(--teal); overflow: hidden; padding: 11px 0; }
+    .mq-t { display: inline-flex; white-space: nowrap; animation: mq 28s linear infinite; }
+    .mq-i { display: inline-flex; align-items: center; gap: 18px; padding: 0 18px; font-size: .62rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: rgba(0,0,0,.5); }
+    .mq-i span { width: 3px; height: 3px; border-radius: 50%; background: rgba(0,0,0,.22); }
+    @keyframes mq { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    /* WORK: case studies as accordion */
+    #work { background: var(--bg); }
+    .svc-head { border-bottom: 1px solid var(--rd); padding-bottom: 28px; margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
+    .svc-h2 { font-size: clamp(1.875rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.048em; color: var(--white); line-height: 1.0; }
+    .svc-aside { font-size: .78rem; color: var(--txt3); line-height: 1.6; max-width: 240px; text-align: right; }
+    .acc { border-top: 1px solid var(--rd); }
+    .acc-item { border-bottom: 1px solid var(--rd); position: relative; }
+    .acc-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: var(--teal); transform: scaleY(0); transform-origin: top; transition: transform .3s cubic-bezier(.16,1,.3,1); }
+    .acc-item.open::before { transform: scaleY(1); }
+    .acc-btn { width: 100%; display: flex; align-items: center; gap: 18px; padding: 22px 0 22px 14px; background: none; border: none; cursor: pointer; text-align: left; font-family: var(--ff); }
+    .acc-n { font-size: .65rem; font-weight: 700; letter-spacing: .04em; color: var(--txt3); width: 20px; }
+    .acc-item.open .acc-n { color: var(--teal); }
+    .acc-title { flex: 1; font-size: 1rem; font-weight: 700; color: var(--txt); letter-spacing: -.018em; line-height: 1.3; }
+    .acc-badge { font-size: .68rem; color: var(--txt3); background: rgba(255,255,255,.04); border: 1px solid var(--rd); padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+    .acc-ico { color: var(--txt3); font-size: 1.1rem; line-height: 1; transition: transform .3s, color .18s; }
+    .acc-item.open .acc-ico { transform: rotate(45deg); color: var(--teal); }
+    .acc-body { overflow: hidden; max-height: 0; transition: max-height .45s cubic-bezier(.16,1,.3,1); }
+    .acc-item.open .acc-body { max-height: 1600px; }
+    .acc-inner { padding: 0 0 28px 52px; max-width: 760px; }
+    .cs-k { font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--teal); margin: 18px 0 6px; }
+    .cs-k:first-child { margin-top: 0; }
+    .cs-p { font-size: .9rem; color: var(--txt2); line-height: 1.8; }
+    .cs-p .fill { color: var(--teal); opacity: .8; }
+
+    /* STANCE */
+    #stance { background: var(--bg2); }
+    .vis-g { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+    .vis-h2 { font-size: clamp(1.75rem, 3.5vw, 2.625rem); font-weight: 900; letter-spacing: -.045em; color: var(--white); line-height: 1.05; margin-bottom: 16px; }
+    .vis-p { font-size: .9375rem; color: var(--txt2); line-height: 1.82; }
+    .vtiles { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; border-radius: var(--rlg); overflow: hidden; }
+    .vt { background: var(--card); padding: 24px 20px; border: 1px solid var(--rd); }
+    .vt-n { font-size: 2.125rem; font-weight: 900; color: var(--teal); letter-spacing: -.06em; line-height: 1; margin-bottom: 8px; }
+    .vt-l { font-size: .76rem; color: var(--txt3); line-height: 1.55; }
+
+    /* CONTACT */
+    #contact { background: var(--bg3); }
+    .cg { display: grid; grid-template-columns: 1fr 360px; gap: 72px; align-items: start; }
+    .c-h2 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; letter-spacing: -.048em; color: var(--white); line-height: 1.0; margin-bottom: 14px; }
+    .c-p { font-size: .9375rem; color: var(--txt2); line-height: 1.72; margin-bottom: 22px; }
+    .c-em { display: inline-flex; align-items: center; gap: 8px; font-size: .95rem; font-weight: 600; color: var(--teal); }
+    .c-em:hover { opacity: .65; }
+    .fbox { background: var(--card); border: 1px solid var(--rd); border-radius: var(--rlg); overflow: hidden; }
+    .fbox-bar { height: 2px; background: linear-gradient(90deg, var(--teal), rgba(58,191,191,.04)); }
+    .fpad { padding: clamp(20px, 3vw, 28px); }
+    .lk { display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--rd); font-size: .875rem; }
+    .lk:last-child { border-bottom: none; }
+    .lk span { color: var(--txt3); font-size: .75rem; }
+    .lk a { color: var(--txt); font-weight: 600; }
+    .lk a:hover { color: var(--teal); }
+
+    footer { border-top: 1px solid var(--rd); padding: 22px 0; }
+    .ft { max-width: 1080px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 48px); display: flex; align-items: center; justify-content: space-between; }
+    .ft-c, .ft-li { font-size: .72rem; color: var(--txt3); }
+    .ft-li:hover { color: var(--teal); }
+
+    @media (max-width: 900px) {
+      .about-g { grid-template-columns: 1fr; gap: 40px; }
+      .photo-card { position: static; max-width: 320px; }
+      .svc-head { flex-direction: column; align-items: flex-start; }
+      .svc-aside { text-align: left; max-width: 100%; }
+      .vis-g, .cg { grid-template-columns: 1fr; gap: 44px; }
+      .acc-inner { padding-left: 34px; }
+    }
+    @media (max-width: 640px) {
+      .nav-ul { display: none; flex-direction: column; gap: 0; position: fixed; top: 58px; left: 0; right: 0; background: rgba(12,12,14,.98); padding: 8px 0 16px; border-bottom: 1px solid var(--rd); }
+      .nav-ul.open { display: flex; }
+      .nav-ul li { width: 100%; }
+      .nav-ul a { display: block; padding: 12px 20px; font-size: .9375rem; border-radius: 0; background: none !important; border: none !important; margin: 0 !important; }
+      .brg { display: flex; }
+      .hrow { flex-direction: column; gap: 16px; }
+      .hstat { border-right: none; border-bottom: 1px solid var(--rd); padding: 0 0 16px; margin: 0; }
+      .hstat:last-child { border-bottom: none; padding-bottom: 0; }
+      .vtiles { grid-template-columns: 1fr; }
+      .ft { flex-direction: column; gap: 10px; text-align: center; }
+      .acc-badge { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#hero" class="logo"><div class="logo-sq"><span>CG</span></div>Conor Caldwell-Gibbons</a>
+    <button class="brg" id="brg" aria-label="Menu"><span></span><span></span><span></span></button>
+    <ul class="nav-ul" id="nul">
+      <li><a href="#about">About</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#stance">Point of view</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="W">
+    <div class="hero-inner">
+      <div class="hero-tag" data-r="1"><span class="pip"></span>Open to relocation &middot; research, operations and consulting roles</div>
+      <h1 class="hero-h1" data-r="2">I find out what people <span class="tc">actually do</span> <span class="dim">when AI shows up in their work.</span></h1>
+      <p class="hero-sub" data-r="3">I'm a psychology graduate who has spent the last year designing and running studies, interviewing business owners, and coordinating projects from a rough brief through to delivery, then writing up what I found in a way that lets someone else act on it. I'm looking for research coordinator, research operations, consulting, and business operations roles.</p>
+      <div class="hero-acts" data-r="3">
+        <a href="#work" class="btn-t">See the work</a>
+        <a href="resume.pdf" class="btn-g">Download resume</a>
+      </div>
+      <div class="hrow" data-r="3">
+        <div class="hstat"><div class="hstat-n">5</div><div class="hstat-l">documented projects, same five questions each</div></div>
+        <div class="hstat"><div class="hstat-n">2</div><div class="hstat-l">quantitative studies analysed in R, one of them an experiment I designed and ran</div></div>
+        <div class="hstat"><div class="hstat-n">100</div><div class="hstat-l">senior AI leaders at a conference I'm producing, Dec 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="W">
+    <div class="about-g">
+      <div>
+        <div class="sec-tag" data-r="1">About</div>
+        <h2 class="h2-d" data-r="1">The part most people skip is what the humans did.</h2>
+        <p class="p-d" data-r="2">I'm Conor Caldwell-Gibbons, a 2026 graduate of the University of Colorado Boulder with a B.A. in Psychology and a minor in Business. My degree was heavy on research methods and consumer behaviour, and this year I've been doing the applied version of both: running customer discovery for an AI startup in Las Vegas, building a research database for an awards outreach campaign, and now producing a paid online conference for heads of AI enablement at large companies, from the event page through to the technical side on the day.</p>
+        <p class="p-d" data-r="2">What ties that work together is a single question I keep coming back to. Most companies measure AI by how many licences they've bought and how often people log in, but what I find more interesting is what happens to the person using it, whether they get more accurate, whether they get more confident, and whether those two things still move together once the tool is in the loop. That's a psychology question as much as a technology one, and it's the one I designed an experiment around in my final year.</p>
+        <p class="p-d" data-r="2">I use AI tools every day and they make this work faster, but I've learned the hard way that they don't replace the part where you sit with the data, or the person, and actually look.</p>
+        <p class="p-d" data-r="2">Outside of work I write feature screenplays and I trade. I traded options for a stretch and learned a lot from people who do it for a living, and these days I mostly run small bots in Python to test whether an idea holds up against real market data before I put money behind it. The screenplays taught me how to finish something long when nobody is asking for it, and the trading taught me how often a confident feeling turns out to be wrong.</p>
+        <div class="pills" data-r="3">
+          <span class="pill">Experimental design</span><span class="pill">R, SPSS, Qualtrics</span><span class="pill">Interviewing</span>
+          <span class="pill">Customer discovery</span><span class="pill">Project coordination</span><span class="pill">Event production</span><span class="pill">Business operations</span><span class="pill">Clear writing</span><span class="pill">AI workflows and agents</span>
+        </div>
+      </div>
+      <div class="photo-card" data-r="2">
+        <div class="photo-img"><!-- replace with <img src="conor.jpg" alt="Conor Caldwell-Gibbons"> --></div>
+        <div class="photo-ft"><div class="photo-n">Conor Caldwell-Gibbons</div><div class="photo-s">Psychology, CU Boulder &middot; Open to relocation</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="mq"><div class="mq-t">
+  <div class="mq-i"><span></span>Experimental design</div><div class="mq-i"><span></span>Customer discovery</div><div class="mq-i"><span></span>Usability research</div><div class="mq-i"><span></span>Project coordination</div><div class="mq-i"><span></span>Event production</div><div class="mq-i"><span></span>Human and AI interaction</div>
+  <div class="mq-i"><span></span>Experimental design</div><div class="mq-i"><span></span>Customer discovery</div><div class="mq-i"><span></span>Usability research</div><div class="mq-i"><span></span>Project coordination</div><div class="mq-i"><span></span>Event production</div><div class="mq-i"><span></span>Human and AI interaction</div>
+</div></div>
+
+<section id="work">
+  <div class="W">
+    <div class="svc-head" data-r="1">
+      <h2 class="svc-h2">Five projects.<br>Same five questions.</h2>
+      <p class="svc-aside">Every write-up below answers the same five questions in the same order: what the situation was, what I did, how I did it, what came of it, and what I would do differently next time. That includes the result that contradicted my own hypothesis, because that is usually the most useful part.</p>
+    </div>
+    <div class="acc" data-r="2">
+
+      <div class="acc-item open">
+        <button class="acc-btn"><span class="acc-n">01</span><span class="acc-title">Does it matter when students see an AI explanation? A controlled experiment</span><span class="acc-badge">Experiment &middot; 2026</span><span class="acc-ico">+</span></button>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="cs-k">Situation</div><p class="cs-p">Students use AI study tools constantly, and the common worry is that a fluent AI explanation makes you feel you understand something you don't. Most studies compare AI to no AI. I wanted a narrower question: does it matter whether the explanation comes before or after you try to answer?</p>
+          <div class="cs-k">What I did</div><p class="cs-p">Designed and ran a within-subjects, counterbalanced experiment with 17 participants in PsyToolkit. Everyone read short immunology passages, answered ten multiple-choice questions per condition, and rated confidence after each. In the AI-first condition a labelled AI explanation appeared before each question. In the retrieval-first condition they answered first and saw the same explanation as feedback.</p>
+          <div class="cs-k">Method</div><p class="cs-p">Trial-level accuracy, reaction time, and confidence. Analysis in R: linear mixed-effects models for accuracy and response time, paired t-tests for calibration (confidence minus accuracy) and confidence. An order check confirmed counterbalancing worked.</p>
+          <div class="cs-k">Result</div><p class="cs-p">AI-first produced much higher accuracy (66% vs 46%, d = 1.51) and higher confidence, but confidence rose less than accuracy, so people were more underconfident, not overconfident as I predicted. The calibration difference trended but wasn't significant with 17 people (p = .075). In other words, a single brief explanation placed before a question behaved more like teaching than like a crutch, which is not what I expected going in.</p>
+          <div class="cs-k">What I'd change</div><p class="cs-p">Larger sample, a delayed retention test a week or more later, and content participants already partly know, since unfamiliar immunology probably suppressed confidence in both conditions.</p>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span class="acc-n">02</span><span class="acc-title">Customer discovery for an AI brand-system startup</span><span class="acc-badge">Research &middot; Las Vegas, 2026</span><span class="acc-ico">+</span></button>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="cs-k">Situation</div><p class="cs-p">An early-stage startup selling an AI brand system to small businesses had no validated picture of who the customer was, what they already did about the problem, or what they would pay. I owned customer discovery from the first draft of the script to the interviews themselves.</p>
+          <div class="cs-k">What I did</div><p class="cs-p">Defined the target segments (HVAC, pest control, senior care) and buyer profile. Wrote the interview script and revised it through seven versions, including a branch for owners who use no AI at all. Built the interview tracker and a companion survey. <span class="fill">[Number of interviews completed and booked.]</span></p>
+          <div class="cs-k">Method</div><p class="cs-p">Semi-structured interviews with recording consent, no product mention, one fixed script run identically for everyone. Captured pain in the owner's words, severity, frequency, current workaround, alternatives, willingness-to-pay signal, and whether they named the problem unprompted.</p>
+          <div class="cs-k">Result</div><p class="cs-p"><span class="fill">[Two or three findings, one sentence each.]</span> The structural lesson: the first script was built around the wrong audience and had to be rebuilt from a transcript rather than patched.</p>
+          <div class="cs-k">What I'd change</div><p class="cs-p">Book interviews before writing the script, not after, and run the readout as a second conversation with each owner.</p>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span class="acc-n">03</span><span class="acc-title">Nominee research for a regional tech awards outreach campaign</span><span class="acc-badge">Research &middot; 2026</span><span class="acc-ico">+</span></button>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="cs-k">Situation</div><p class="cs-p">The founder I worked for was a nominee at a business awards event and wanted to reach fellow nominees beforehand. He needed verified facts on each person and a database that kept what was known separate from what was an angle.</p>
+          <div class="cs-k">What I did</div><p class="cs-p">Built the research database with a fixed set of fields per person: verified title and tenure, what the organisation does, a recent trigger, a personal hook, risk flags, sources, last-verified date. Researched <span class="fill">[number]</span> nominees and drafted personalised openers.</p>
+          <div class="cs-k">Method</div><p class="cs-p">Every fact verified against LinkedIn and the company site with a source link on the row. Contradictions between sources were recorded as contradictions, not resolved by guesswork. Judgment fields kept separate from fact fields.</p>
+          <div class="cs-k">Result</div><p class="cs-p"><span class="fill">[Contacted, replies, meetings, if known.]</span> The database became the one place anyone on the project could check a claim about a person before making it.</p>
+          <div class="cs-k">What I'd change</div><p class="cs-p">Start with three practice profiles and get them checked before scaling, which is what I did after the first pass showed the template needed tightening.</p>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span class="acc-n">04</span><span class="acc-title">Producing a paid one-day online conference for heads of AI enablement</span><span class="acc-badge">In progress &middot; Dec 2026</span><span class="acc-ico">+</span></button>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="cs-k">Situation</div><p class="cs-p">A senior AI advisor decided to run a one-day online conference for heads of AI enablement at large companies: about 100 attendees, five 45-minute sessions, a confirmed speaker from a major entertainment company. I own production: event page, registration, and the technical side on the day.</p>
+          <div class="cs-k">What I did</div><p class="cs-p">Started with a readiness brief that separated verified facts from 24 open decisions (platform, ticketing, recording, refund policy, run of show, lineup) so the founder could decide in blocks rather than in a pile. <span class="fill">[What was built, in order, as it happens.]</span></p>
+          <div class="cs-k">Method</div><p class="cs-p">Bounded work blocks with a written handover after each, one source of truth for event facts, nothing published or sent without sign-off.</p>
+          <div class="cs-k">Result</div><p class="cs-p">The conference runs on 9 December 2026, so the result will be written up here afterwards.</p>
+          <div class="cs-k">What I'd change</div><p class="cs-p">Written up after the event.</p>
+        </div></div>
+      </div>
+
+      <div class="acc-item">
+        <button class="acc-btn"><span class="acc-n">05</span><span class="acc-title">Do people who like exercise also believe they can stick to it? A 2,133-person correlational study</span><span class="acc-badge">Research &middot; 2025</span><span class="acc-ico">+</span></button>
+        <div class="acc-body"><div class="acc-inner">
+          <div class="cs-k">Situation</div><p class="cs-p">Most people know exercise is good for them and still don't do enough of it. The Theory of Planned Behavior says two things sit between intention and action: how you feel about the behavior (attitude) and whether you believe you can actually do it (perceived behavioral control). I wanted to know how tightly those two travel together, because an intervention that only fixes one of them may not move behavior.</p>
+          <div class="cs-k">What I did</div><p class="cs-p">Worked with a pooled survey dataset of CU Boulder undergraduates collected across several years with identical procedures: 2,295 responses, 162 dropped for missing data, 2,133 analysed (mean age 20.7, mostly women). Measured attitude and perceived behavioral control with the Kwan and Bryan (2010) scales, eight items on a seven-point scale each, and checked their reliability before using them.</p>
+          <div class="cs-k">Method</div><p class="cs-p">Self-report correlational design, Pearson's correlation in R (Posit Cloud). Both scales held up: Cronbach's alpha .89 for attitude and .91 for control. Checked the scatterplot for outliers and linearity before trusting the number.</p>
+          <div class="cs-k">Result</div><p class="cs-p">A moderate to strong positive relationship, r(2131) = .53, p &lt; .001. People who felt more positive about exercise also believed more strongly that they could keep it up. That is noticeably higher than the roughly .33 that meta-analyses report for this pair across behaviors, which suggests the two are unusually entangled for exercise specifically, and that programmes built only on health facts are missing the enjoyment and confidence pieces.</p>
+          <div class="cs-k">What I'd change</div><p class="cs-p">It is correlational, so it says nothing about direction. The honest next study manipulates one construct and watches the other. It is also self-report on a student convenience sample, so social desirability and generalisability are both open questions. And with n = 2,133 almost anything is significant, so the number that matters is the effect size, not the p-value.</p>
+        </div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="stance">
+  <div class="W">
+    <div class="vis-g">
+      <div>
+        <div class="sec-tag" data-r="1">Point of view</div>
+        <h2 class="vis-h2" data-r="1">The question isn't whether people have AI. It's where it sits relative to their own effort.</h2>
+        <p class="vis-p" data-r="2">In my experiment the tool and the content were identical in both conditions, and the only thing that changed was whether the explanation arrived before or after the person had tried to answer for themselves. That one change moved accuracy by twenty points. Most organisations are busy answering the access question, who has the tool and how much they use it, and very few are measuring the second one, which is whether people's confidence still tracks what they actually know once the tool is doing some of the thinking. That gap is a psychology problem more than a software problem, and it's the one I want to keep working on.</p>
+      </div>
+      <div class="vtiles" data-r="2">
+        <div class="vt"><div class="vt-n">20pt</div><div class="vt-l">accuracy difference from timing alone, same tool, same content</div></div>
+        <div class="vt"><div class="vt-n">24</div><div class="vt-l">open decisions pulled out of one verbal conference brief, grouped so the founder could decide in blocks</div></div>
+        <div class="vt"><div class="vt-n">7</div><div class="vt-l">versions of one interview script before it asked the right questions</div></div>
+        <div class="vt"><div class="vt-n">5</div><div class="vt-l">questions every project write-up has to answer, including what I'd change</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="W">
+    <div class="cg">
+      <div>
+        <div class="sec-tag" data-r="1">Contact</div>
+        <h2 class="c-h2" data-r="1">Get in<br>touch.</h2>
+        <p class="c-p" data-r="2">I'm looking for research coordinator, research operations, consulting, and business operations roles, and I'm open to relocation. If you'd rather just talk about the conference, the experiment, or the argument above, I'm happy to do that too.</p>
+        <a href="mailto:conorliamgibbons@gmail.com" class="c-em" data-r="2">conorliamgibbons@gmail.com</a>
+      </div>
+      <div class="fbox" data-r="2">
+        <div class="fbox-bar"></div>
+        <div class="fpad">
+          <div class="lk"><span>Resume</span><a href="resume.pdf">PDF</a></div>
+          <div class="lk"><span>LinkedIn</span><a href="https://linkedin.com/in/conorgibbons192302" target="_blank" rel="noopener">linkedin.com/in/conorgibbons192302</a></div>
+          <div class="lk"><span>Email</span><a href="mailto:conorliamgibbons@gmail.com">conorliamgibbons@gmail.com</a></div>
+          <div class="lk"><span>Location</span><a>Open to relocation</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft">
+    <p class="ft-c">Conor Caldwell-Gibbons &copy; 2026</p>
+    <a href="https://linkedin.com/in/conorgibbons192302" target="_blank" rel="noopener" class="ft-li">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  function reveal() {
+    const vh = window.innerHeight;
+    document.querySelectorAll('[data-r]:not(.vis)').forEach(el => {
+      if (el.getBoundingClientRect().top < vh - 24) el.classList.add('vis');
+    });
+  }
+  reveal(); window.addEventListener('scroll', reveal, { passive: true }); window.addEventListener('load', reveal);
+  document.querySelectorAll('.acc-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.acc-item');
+      const was = item.classList.contains('open');
+      btn.closest('.acc').querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+      if (!was) item.classList.add('open');
+    });
+  });
+  const brg = document.getElementById('brg'), nul = document.getElementById('nul');
+  brg.addEventListener('click', () => { const o = nul.classList.toggle('open'); brg.classList.toggle('open', o); });
+  nul.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nul.classList.remove('open')));
+</script>
+</body>
+</html>
