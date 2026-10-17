@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Conor Caldwell-Gibbons</title>
   <meta name="description" content="Psychology graduate who runs research, coordinates projects, and works on the human side of AI. Five documented projects." />
+  <meta property="og:title" content="Conor Caldwell-Gibbons" />
+  <meta property="og:description" content="Psychology graduate who runs research, coordinates projects, and works on the human side of AI. Five documented projects." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;0,14..32,900;1,14..32,300;1,14..32,400&display=swap" rel="stylesheet" />
@@ -25,12 +27,12 @@
       --cream:    #F4F2ED;
       --ink:      #111113;
       --body-c:   #42424A;
-      --muted:    #8A8A94;
+      --muted:    #75757F;
       --rl:       #E0DDD6;
       --rd:       rgba(255,255,255,0.065);
       --txt:      rgba(255,255,255,0.82);
-      --txt2:     rgba(255,255,255,0.45);
-      --txt3:     rgba(255,255,255,0.22);
+      --txt2:     rgba(255,255,255,0.47);
+      --txt3:     rgba(255,255,255,0.46);
       --ff:       'Inter', sans-serif;
       --r:        8px;
       --rlg:      12px;
@@ -78,7 +80,7 @@
     @keyframes pip { 0%,100% { box-shadow: 0 0 0 0 rgba(58,191,191,.55); } 60% { box-shadow: 0 0 0 7px rgba(58,191,191,0); } }
     .hero-h1 { font-size: clamp(2.6rem, 7vw, 5.5rem); font-weight: 900; letter-spacing: -.05em; line-height: .98; color: var(--white); margin-bottom: 28px; }
     .hero-h1 .tc { color: var(--teal); }
-    .hero-h1 .dim { font-weight: 300; font-style: italic; color: var(--txt3); }
+    .hero-h1 .dim { font-weight: 300; font-style: italic; color: rgba(255,255,255,.34); }
     .hero-sub { font-size: clamp(.9375rem, 1.5vw, 1.0625rem); color: var(--txt2); line-height: 1.82; max-width: 480px; margin-bottom: 44px; }
     .hero-acts { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 64px; }
     .btn-t { display: inline-flex; align-items: center; gap: 7px; background: var(--teal); color: #071919; font-size: .875rem; font-weight: 700;
@@ -108,6 +110,7 @@
     .photo-img { aspect-ratio: 3/4; background: linear-gradient(150deg, #EAE7DF, #DDD9D0); }
     .photo-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .photo-ft { padding: 13px 15px; border-top: 1px solid var(--rl); }
+    .photo-ft:first-child { border-top: none; }
     .photo-n { font-size: .875rem; font-weight: 700; color: var(--ink); letter-spacing: -.02em; }
     .photo-s { font-size: .7rem; color: var(--muted); margin-top: 2px; }
 
@@ -255,7 +258,7 @@
         </div>
       </div>
       <div class="photo-card" data-r="2">
-        <div class="photo-img"><!-- replace with <img src="conor.jpg" alt="Conor Caldwell-Gibbons"> --></div>
+        <!-- photo removed until ready, restore with <div class="photo-img"><img src="conor.jpg" alt="Conor Caldwell-Gibbons"></div> -->
         <div class="photo-ft"><div class="photo-n">Conor Caldwell-Gibbons</div><div class="photo-s">Psychology, CU Boulder &middot; Open to relocation</div></div>
       </div>
     </div>

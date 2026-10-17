@@ -4,7 +4,7 @@ Single-page portfolio. Static HTML, no build step.
 
 - `index.html` is the whole site. Design system carried over from the earlier CCG Consulting page (dark, teal, Inter).
 - `resume.pdf` is referenced by the Resume buttons. Export the current resume Google Doc as PDF and drop it here with that exact name.
-- `conor.jpg` is optional. Uncomment the `<img>` in the About photo card to use it.
+- `conor.jpg` is optional. Restore the commented-out `photo-img` div in the About photo card to use it.
 - Text in teal brackets on the live page is a placeholder Conor has to fill (interview counts, nominee count, findings). Search `class="fill"`.
 
 ## Hosting (GitHub Pages)
