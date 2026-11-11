@@ -95,7 +95,7 @@
     .hrow { border-top: 1px solid var(--rd); padding-top: 28px; display: flex; }
     .hstat { padding-right: 30px; margin-right: 30px; border-right: 1px solid var(--rd); }
     .hstat:last-child { border-right: none; margin-right: 0; padding-right: 0; }
-    .hstat-n { font-size: 1.5rem; font-weight: 900; color: var(--white); letter-spacing: -.05em; line-height: 1; margin-bottom: 5px; }
+    .hstat-n { font-size: 2.25rem; font-weight: 900; color: var(--white); letter-spacing: -.05em; line-height: 1; margin-bottom: 5px; }
     .hstat-l { font-size: .7rem; color: var(--txt3); line-height: 1.45; max-width: 150px; }
 
     /* ABOUT */
@@ -233,7 +233,7 @@
     <div class="hero-inner">
       <div class="hero-tag" data-r="1"><span class="pip"></span>Open to relocation &middot; operations, project coordination, consulting and research roles</div>
       <h1 class="hero-h1" data-r="2">I find out what people <span class="tc">really do</span> <span class="dim">when AI shows up in their work.</span></h1>
-      <p class="hero-sub" data-r="3">In the last year I ran about 75 customer interviews across two very different products, designed and analyzed a controlled experiment, and started producing a 100-person online conference from the event page to the live production on the day. The pattern across all three is the same, understand how someone works, build the plan around it, and write it up so the next person can act on it. I'm looking for operations, project coordination, consulting and research roles. I'm based between Madison, Denver and Las Vegas and open to relocation.</p>
+      <p class="hero-sub" data-r="3">In the last year I ran about 75 customer interviews, designed and analyzed a controlled experiment, and started producing a 100-person online conference from scratch. The pattern across all three: understand how someone works, build the plan around it, and write it up so the next person can act on it.</p>
       <div class="hero-acts" data-r="3">
         <a href="#work" class="btn-t">See the work</a>
         <a href="resume.pdf" class="btn-g">Download resume</a>
@@ -285,7 +285,7 @@
     </div>
     <div class="acc" data-r="2">
 
-      <div class="acc-item open">
+      <div class="acc-item">
         <button class="acc-btn"><span class="acc-n">01</span><span class="acc-title">Does it matter when students see an AI explanation? A controlled experiment</span><span class="acc-badge">Experiment &middot; 2026</span><span class="acc-ico">+</span></button>
         <div class="acc-body"><div class="acc-inner">
           <div class="cs-k">Situation</div><p class="cs-p">Students use AI study tools constantly, and the common worry is that a fluent AI explanation makes you feel you understand something you don't. Most studies compare AI to no AI. I wanted a narrower question: does it matter whether the explanation comes before or after you try to answer?</p>
@@ -399,8 +399,8 @@
         <div class="fbox-bar"></div>
         <div class="fpad">
           <div class="lk"><span>Resume</span><a href="resume.pdf">PDF</a></div>
-          <div class="lk"><span>LinkedIn</span><a href="https://linkedin.com/in/conorgibbons192302" target="_blank" rel="noopener">linkedin.com/in/conorgibbons192302</a></div>
-          <div class="lk"><span>Email</span><a href="mailto:conorliamgibbons@gmail.com">conorliamgibbons@gmail.com</a></div>
+          <div class="lk"><span>LinkedIn</span><a href="https://linkedin.com/in/conorgibbons192302" target="_blank" rel="noopener">Conor Caldwell-Gibbons</a></div>
+          <div class="lk"><span>Email</span><a href="mailto:conorliamgibbons@gmail.com">Get in touch</a></div>
           <div class="lk"><span>Location</span><a>Open to relocation</a></div>
         </div>
       </div>
@@ -418,12 +418,16 @@
 <script>
   document.documentElement.classList.add('js');
   function reveal() {
-    const vh = window.innerHeight;
+    const vh = window.innerHeight || document.documentElement.clientHeight || 800;
     document.querySelectorAll('[data-r]:not(.vis)').forEach(el => {
       if (el.getBoundingClientRect().top < vh - 24) el.classList.add('vis');
     });
   }
-  reveal(); window.addEventListener('scroll', reveal, { passive: true }); window.addEventListener('load', reveal);
+  reveal();
+  requestAnimationFrame(reveal);
+  setTimeout(reveal, 120);
+  window.addEventListener('scroll', reveal, { passive: true });
+  window.addEventListener('load', reveal);
   document.querySelectorAll('.acc-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const item = btn.closest('.acc-item');
